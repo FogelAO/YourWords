@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">YourWords</string>
+    <string name="value">Value</string>
+    <string name="translate">Translate</string>
+    <string name="add">Add</string>
+    <string name="quiz">Quiz</string>
+    <string name="results">Results</string>
+    <string name="correct">Correct:</string>
+    <string name="wrong">Wrong:</string>
+    <string name="ok">OK</string>
+</resources>

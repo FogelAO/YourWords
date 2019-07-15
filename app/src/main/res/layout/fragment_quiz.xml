@@ -1,0 +1,118 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:orientation="vertical"
+                                                   android:layout_width="match_parent"
+                                                   android:paddingTop="8dp"
+                                                   android:background="@color/white"
+                                                   android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/valueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="27sp"
+            android:textColor="@color/black"
+            tools:text="Apple"/>
+
+    <View
+            android:id="@+id/middleView"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/middleView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+            android:id="@+id/resultsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="27sp"
+            android:text="@string/results"/>
+
+    <TextView
+            android:id="@+id/correctAnswersLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/resultsLabel"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            android:text="@string/correct"/>
+
+    <TextView
+            android:id="@+id/correctAnswersCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/correctAnswersLabel"
+            app:layout_constraintStart_toEndOf="@+id/correctAnswersLabel"
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:textColor="@color/green500"
+            android:textSize="21sp"/>
+
+    <TextView
+            android:id="@+id/wrongAnswersLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/correctAnswersLabel"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            android:text="@string/wrong"/>
+
+    <TextView
+            android:id="@+id/wrongAnswersCountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/wrongAnswersLabel"
+            app:layout_constraintStart_toEndOf="@+id/correctAnswersLabel"
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:textColor="@color/red500"
+            android:textSize="21sp"/>
+
+    <Button
+            android:id="@+id/okButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/blue500"
+            android:textSize="21sp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            android:foreground="?selectableItemBackground"
+            android:text="@string/ok"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

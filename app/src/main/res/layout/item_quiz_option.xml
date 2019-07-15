@@ -1,0 +1,16 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:foreground="?selectableItemBackground"
+             android:layout_height="56dp">
+
+    <TextView
+            android:id="@+id/optionTextView"
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:textSize="21sp"
+            android:layout_height="wrap_content"
+            tools:text="Яблоко"/>
+
+</FrameLayout>
