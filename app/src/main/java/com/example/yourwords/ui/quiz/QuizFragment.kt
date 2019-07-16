@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.yourwords.App
 import com.example.yourwords.R
+import com.example.yourwords.entity.Quiz
 import com.example.yourwords.presentation.quiz.QuizPresenter
 import com.example.yourwords.presentation.quiz.QuizView
 import com.example.yourwords.ui.adapter.option.OptionAdapter
@@ -33,17 +34,14 @@ class QuizFragment : Fragment(), QuizView {
         recyclerView.adapter = adapter
     }
 
+    override fun showQuiz(quiz: Quiz) {
+        valueTextView.text = quiz.value
+        adapter.quiz = quiz
+    }
+
     override fun showWord(value: String, translate: List<String>) {
         valueTextView.text = value
-        adapter.list = translate
-    }
-
-    override fun showCorrect() {
-        Toast.makeText(context, "Correct!", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun showWrong() {
-        Toast.makeText(context, "Wrong!", Toast.LENGTH_SHORT).show()
+//        adapter.list = translate
     }
 
     override fun showResults(correct: String, wrong: String) {

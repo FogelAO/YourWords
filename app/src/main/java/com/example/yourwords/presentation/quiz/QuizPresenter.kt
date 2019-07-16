@@ -1,6 +1,7 @@
 package com.example.yourwords.presentation.quiz
 
 import com.arellomobile.mvp.InjectViewState
+import com.example.yourwords.entity.Quiz
 import com.example.yourwords.entity.Word
 import com.example.yourwords.model.db.AppDatabase
 import com.example.yourwords.model.repository.WordRepository
@@ -26,32 +27,43 @@ class QuizPresenter(db: AppDatabase) : BasePresenter<QuizView>() {
     }
 
     fun onClick(item: String) {
-        if (item == selectedWord.translate) {
-            viewState.showCorrect()
+        if (item == selectedWord.translate){
             correct++
-        } else {
-            viewState.showWrong()
-            wrong++
+            selectWord(500L)
         }
-
-        selectWord()
+        else{
+            wrong++
+            selectWord(1500L)
+        }
     }
 
-    private fun selectWord() {
+    private fun selectWord(delay: Long = 0L) {
         if (queue.isNotEmpty()) {
             GlobalScope.launch(Dispatchers.IO) {
                 selectedWord = queue.poll() ?: throw Exception("NPE")
-                val options = repository.getRandom(3, selectedWord.translate).map { it.translate }.toMutableList().apply {
-                    add(selectedWord.translate)
-                    shuffle()
-                }
+                val options =
+                    repository.getRandom(3, selectedWord.translate).map { it.translate }.toMutableList().apply {
+                        add(selectedWord.translate)
+                        shuffle()
+                    }
+
+                val quiz = Quiz(
+                    value = selectedWord.value,
+                    answer = selectedWord.translate,
+                    answerIndex = options.indexOf(selectedWord.translate),
+                    options = options
+                )
 
                 GlobalScope.launch(Dispatchers.Main) {
-                    viewState.showWord(selectedWord.value, options)
+                    kotlinx.coroutines.delay(delay)
+                    viewState.showQuiz(quiz)
                 }
             }
         } else {
-            viewState.showResults(correct.toString(), wrong.toString())
+            GlobalScope.launch(Dispatchers.Main) {
+                kotlinx.coroutines.delay(delay)
+                viewState.showResults(correct.toString(), wrong.toString())
+            }
         }
     }
 }
